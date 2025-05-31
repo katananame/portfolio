@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 
@@ -15,8 +14,48 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-800">
-      {/* Background decorative elements */}
+      {/* 3D Objects Background */}
       <div className="absolute inset-0 opacity-20">
+        {/* Floating 3D Cubes */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 animate-float-3d">
+          <div className="cube-3d">
+            <div className="cube-face cube-front"></div>
+            <div className="cube-face cube-back"></div>
+            <div className="cube-face cube-right"></div>
+            <div className="cube-face cube-left"></div>
+            <div className="cube-face cube-top"></div>
+            <div className="cube-face cube-bottom"></div>
+          </div>
+        </div>
+        
+        <div className="absolute bottom-1/3 right-1/4 w-24 h-24 animate-float-3d" style={{ animationDelay: '2s' }}>
+          <div className="cube-3d">
+            <div className="cube-face cube-front"></div>
+            <div className="cube-face cube-back"></div>
+            <div className="cube-face cube-right"></div>
+            <div className="cube-face cube-left"></div>
+            <div className="cube-face cube-top"></div>
+            <div className="cube-face cube-bottom"></div>
+          </div>
+        </div>
+
+        {/* Floating 3D Pyramid */}
+        <div className="absolute top-1/2 right-1/3 w-28 h-28 animate-float-3d" style={{ animationDelay: '1s' }}>
+          <div className="pyramid-3d">
+            <div className="pyramid-face pyramid-front"></div>
+            <div className="pyramid-face pyramid-back"></div>
+            <div className="pyramid-face pyramid-right"></div>
+            <div className="pyramid-face pyramid-left"></div>
+            <div className="pyramid-face pyramid-base"></div>
+          </div>
+        </div>
+
+        {/* Interactive rotating sphere */}
+        <div className="absolute top-1/3 left-1/2 w-40 h-40 animate-sphere-rotate cursor-pointer hover:scale-110 transition-transform duration-300">
+          <div className="sphere-3d"></div>
+        </div>
+        
+        {/* Original gradient blobs */}
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full filter blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
@@ -59,13 +98,13 @@ const HeroSection = () => {
           
           {/* Social links */}
           <div className="flex items-center justify-center gap-6 mt-12">
-            <a href="#" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
+            <a href="https://github.com/katananame" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
               <Github size={24} />
             </a>
             <a href="#" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
               <Linkedin size={24} />
             </a>
-            <a href="#" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
+            <a href="mailto:katanacyoff@gmail.com" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
               <Mail size={24} />
             </a>
           </div>

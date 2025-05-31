@@ -7,7 +7,7 @@ import ContactSection from '@/components/ContactSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-black to-slate-800">
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
@@ -17,7 +17,7 @@ const Index = () => {
       <footer className="py-8 bg-black/80 backdrop-blur-sm border-t border-white/10">
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-400">
-            © 2024 Portfolio. All rights reserved.
+            © 2024 KatanaName Portfolio. All rights reserved.
           </p>
         </div>
       </footer>
