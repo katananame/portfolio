@@ -13,7 +13,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-800">
+    <section className="min-h-screen flex flex-col items-center justify-between relative overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-800 py-8">
       {/* 3D Objects Background */}
       <div className="absolute inset-0 opacity-20">
         {/* Floating 3D Cubes */}
@@ -60,29 +60,31 @@ const HeroSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
       
+      <div /> {/* Spacer */}
+      
       <div className="container mx-auto px-4 z-10 text-center">
-        <div className="space-y-8 animate-fade-in">
+        <div className="space-y-6 sm:space-y-8 animate-fade-in" style={{ willChange: 'opacity, transform' }}>
           {/* Main heading with gradient and glow */}
-          <h1 className="text-6xl md:text-8xl font-bold leading-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight opacity-100">
             <span className="block text-gradient glow-effect animate-glow">
               Hello, I'm
             </span>
-            <span className="block text-gradient glow-effect animate-glow" style={{ animationDelay: '0.5s' }}>
+            <span className="block text-gradient glow-effect animate-glow break-words" style={{ animationDelay: '0.5s' }}>
               KatanaName
             </span>
           </h1>
           
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto opacity-90">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto opacity-90">
             Creating modern web applications using the latest technologies. 
             Specializing in React, TypeScript and modern UI/UX design.
           </p>
           
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-12">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6 sm:mt-8">
             <button 
               onClick={scrollToProjects}
-              className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/25"
+              className="w-full sm:w-auto group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold rounded-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/25"
             >
               <span className="relative z-10">View My Work</span>
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -90,14 +92,14 @@ const HeroSection = () => {
             
             <button 
               onClick={scrollToContact}
-              className="px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full transition-all duration-300 hover:border-white hover:bg-white/10 hover:scale-105"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/30 text-white font-semibold rounded-full transition-all duration-300 hover:border-white hover:bg-white/10 hover:scale-105"
             >
               Contact Me
             </button>
           </div>
           
           {/* Social links */}
-          <div className="flex items-center justify-center gap-6 mt-12">
+          <div className="flex items-center justify-center gap-4 mt-6 sm:mt-8">
             <a href="https://github.com/katananame" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:scale-110 transition-all duration-300">
               <Github size={24} />
             </a>
@@ -112,8 +114,8 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ArrowDown size={32} className="text-white/60" />
+      <div className="flex justify-center w-full mt-8">
+        <ArrowDown size={32} className="text-white/60 animate-bounce" />
       </div>
     </section>
   );

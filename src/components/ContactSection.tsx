@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,7 @@ const ContactSection = () => {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Contact info */}
           <div className="space-y-8">
             <div className="flex items-center gap-4 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
@@ -49,18 +48,18 @@ const ContactSection = () => {
           
           {/* Contact form */}
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <Input 
                   placeholder="Your name" 
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
+                  className="bg-slate-900/50 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
                 />
               </div>
               <div>
                 <Input 
                   type="email" 
                   placeholder="Email" 
-                  className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
+                  className="bg-slate-900/50 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
                 />
               </div>
             </div>
@@ -68,7 +67,7 @@ const ContactSection = () => {
             <div>
               <Input 
                 placeholder="Message subject" 
-                className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
+                className="bg-slate-900/50 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40"
               />
             </div>
             
@@ -76,13 +75,13 @@ const ContactSection = () => {
               <Textarea 
                 placeholder="Your message..." 
                 rows={6}
-                className="bg-white/5 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40 resize-none"
+                className="bg-slate-900/50 border-white/20 text-white placeholder:text-gray-400 focus:border-white/40 resize-none"
               />
             </div>
             
             <Button 
               type="submit" 
-              className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-3 rounded-xl transition-all duration-300 hover:scale-105"
+              className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-6 rounded-[20px] transition-all duration-300 hover:scale-105"
             >
               Send Message
             </Button>

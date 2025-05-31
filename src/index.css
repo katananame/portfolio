@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
@@ -224,5 +223,128 @@ body {
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+}
+
+/* Animation control */
+.animations-disabled {
+  --animation-multiplier: 0;
+}
+
+body:not(.animations-disabled) {
+  --animation-multiplier: 1;
+}
+
+/* Modify all animations to respect the multiplier */
+.animate-float-3d {
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+.animations-disabled .animate-float-3d {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.animate-sphere-rotate {
+  animation: rotate 20s linear infinite;
+  animation-play-state: running;
+}
+
+.animations-disabled .animate-sphere-rotate {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  animation-play-state: running;
+}
+
+.animations-disabled .animate-float {
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+  animation-play-state: running;
+}
+
+.animations-disabled .animate-glow {
+  animation-play-state: paused;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+  animation-play-state: running;
+}
+
+.animations-disabled .animate-bounce {
+  animation-play-state: paused;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+  animation-play-state: running;
+  opacity: 1 !important;
+}
+
+.animations-disabled .animate-fade-in {
+  animation: none;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Hide 3D objects when animations are disabled */
+.animations-disabled .cube-3d,
+.animations-disabled .pyramid-3d,
+.animations-disabled .sphere-3d {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Ensure content is always visible even when animations are disabled */
+.animations-disabled .space-y-8 {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Existing animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
