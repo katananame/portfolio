@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { Code, Palette, Zap } from 'lucide-react';
+import { AnimatedSection } from './ui/AnimatedSection';
 
 const AboutSection = () => {
   const skills = [
@@ -24,7 +24,7 @@ const AboutSection = () => {
   return (
     <section className="py-24 bg-slate-900/50 backdrop-blur-sm">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <AnimatedSection className="text-center mb-16" delay={0.1}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             About Me
           </h2>
@@ -32,13 +32,14 @@ const AboutSection = () => {
             I'm a passionate frontend developer with over 3 years of experience creating 
             web applications. I love turning ideas into beautiful and functional interfaces.
           </p>
-        </div>
+        </AnimatedSection>
         
         <div className="grid md:grid-cols-3 gap-8">
           {skills.map((skill, index) => (
-            <div 
+            <AnimatedSection 
               key={index}
               className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 hover:border-white/20"
+              delay={0.2}
             >
               <div className="text-white mb-6 flex justify-center">
                 {skill.icon}
@@ -49,7 +50,7 @@ const AboutSection = () => {
               <p className="text-gray-300 text-center">
                 {skill.description}
               </p>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

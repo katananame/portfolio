@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import { useAnimations } from '@/contexts/AnimationContext';
+import { AnimatedSection } from './ui/AnimatedSection';
 
 const ProjectCard = ({ project, index }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -133,24 +134,26 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 bg-black/50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <AnimatedSection className="text-center mb-16" delay={0.1}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             My Projects
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Here are some of the projects I've been working on. More coming soon!
           </p>
-        </div>
+        </AnimatedSection>
         
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <AnimatedSection key={index} delay={0.2}>
+              <ProjectCard project={project} index={index} />
+            </AnimatedSection>
           ))}
         </div>
         
-        <div className="text-center mt-12">
+        <AnimatedSection className="text-center mt-12" delay={0.2}>
           <p className="text-gray-400">More projects coming soon...</p>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
