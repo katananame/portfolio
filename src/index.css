@@ -29,6 +29,26 @@ body {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
 }
 
+/* Custom scrollbar for code sections */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.15));
+}
+
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
@@ -347,4 +367,42 @@ body:not(.animations-disabled) {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 3D Card Flip Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Code highlighting */
+.language-typescript {
+  color: #9CDCFE;
+}
+
+.language-typescript .keyword {
+  color: #C586C0;
+}
+
+.language-typescript .function {
+  color: #DCDCAA;
+}
+
+.language-typescript .string {
+  color: #CE9178;
+}
+
+.language-typescript .comment {
+  color: #6A9955;
 }
