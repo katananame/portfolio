@@ -1,7 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 
 const HeroSection = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setPrefersReducedMotion(mediaQuery.matches);
+
+    const handleChange = () => setPrefersReducedMotion(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (prefersReducedMotion) return;
+      
+      // Calculate mouse position relative to the window center
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [prefersReducedMotion]);
+
+  const getTransform = (baseDelay, intensity = 1) => {
+    if (prefersReducedMotion) return {};
+    
+    const moveX = mousePosition.x * 30 * intensity;
+    const moveY = mousePosition.y * 30 * intensity;
+    
+    return {
+      transform: `translate(${moveX}px, ${moveY}px)`,
+      transition: 'transform 0.2s ease-out',
+      animationDelay: `${baseDelay}s`
+    };
+  };
+
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     projectsSection?.scrollIntoView({ behavior: 'smooth' });
@@ -17,7 +57,10 @@ const HeroSection = () => {
       {/* 3D Objects Background */}
       <div className="absolute inset-0 opacity-20">
         {/* Floating 3D Cubes */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 animate-float-3d">
+        <div 
+          className="absolute top-1/4 left-1/4 w-32 h-32 animate-float-3d"
+          style={getTransform(0, 1.2)}
+        >
           <div className="cube-3d">
             <div className="cube-face cube-front"></div>
             <div className="cube-face cube-back"></div>
@@ -28,7 +71,10 @@ const HeroSection = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-1/3 right-1/4 w-24 h-24 animate-float-3d" style={{ animationDelay: '2s' }}>
+        <div 
+          className="absolute bottom-1/3 right-1/4 w-24 h-24 animate-float-3d"
+          style={getTransform(2, 0.8)}
+        >
           <div className="cube-3d">
             <div className="cube-face cube-front"></div>
             <div className="cube-face cube-back"></div>
@@ -40,7 +86,10 @@ const HeroSection = () => {
         </div>
 
         {/* Floating 3D Pyramid */}
-        <div className="absolute top-1/2 right-1/3 w-28 h-28 animate-float-3d" style={{ animationDelay: '1s' }}>
+        <div 
+          className="absolute top-1/2 right-1/3 w-28 h-28 animate-float-3d"
+          style={getTransform(1, 1.5)}
+        >
           <div className="pyramid-3d">
             <div className="pyramid-face pyramid-front"></div>
             <div className="pyramid-face pyramid-back"></div>
@@ -51,13 +100,25 @@ const HeroSection = () => {
         </div>
 
         {/* Interactive rotating sphere */}
-        <div className="absolute top-1/3 left-1/2 w-40 h-40 animate-sphere-rotate cursor-pointer hover:scale-110 transition-transform duration-300">
+        <div 
+          className="absolute top-1/3 left-1/2 w-40 h-40 animate-sphere-rotate cursor-pointer hover:scale-110 transition-transform duration-300"
+          style={getTransform(0.5, 0.6)}
+        >
           <div className="sphere-3d"></div>
         </div>
         
-        {/* Original gradient blobs */}
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full filter blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+        {/* Gradient blobs */}
+        <div 
+          className="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-500 rounded-full filter blur-3xl animate-float"
+          style={getTransform(0, 0.3)}
+        ></div>
+        <div 
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl animate-float"
+          style={{
+            ...getTransform(1, 0.4),
+            animationDelay: '1s'
+          }}
+        ></div>
       </div>
       
       <div /> {/* Spacer */}
